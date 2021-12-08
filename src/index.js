@@ -38,16 +38,14 @@ io.on("connection", (socket) => {
     // When we get a message from the frontend we broadcast it to all users in the room
     socket.on("sendmessage", ({ message, room }) => {
         //socket.broadcast.emit("message", message) // this is sending to all users except the sender
-        console.log(room);
-        console.log(message);
+        //console.log(room);
+        //console.log(message);
         socket.to(room).emit("message", message)
         //socket.broadcast.emit("message", message) 
     })
 
-    socket.on("privatemessage", ({message, room}) => {
-       /*  console.log("HERE IN THE PRIVATE MESSAGE")
-        console.log({message, room});
-        console.log(socket.rooms); */
+
+    /*  socket.on("privatemessage", ({message, room}) => {
 
         console.log("THE ROOM IS:", room);
 
@@ -60,7 +58,7 @@ io.on("connection", (socket) => {
             socket.emit("newConnection");
             socket.to(room).emit("usermessage", message);
         }
-    })
+    }) */
 
 
     socket.on("disconnect", () => {
